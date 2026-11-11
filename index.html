@@ -14,6 +14,7 @@
     --accent: #1f5b35;
     --texte-accent: #ffffff;
     --filet: color-mix(in srgb, var(--texte) 18%, transparent);
+    --carte: color-mix(in srgb, #fff 72%, var(--fond));
     --erreur: #d04348;
     --courbe: cubic-bezier(.23, 1, .32, 1);
   }
@@ -31,16 +32,25 @@
   main { display: flex; flex-direction: column; gap: 40px; margin-top: 32px; }
   .share h2 { margin: 0 0 8px; font-size: 22px; line-height: 1.2; }
   .consigne { margin: 0 0 12px; color: var(--discret); font-size: 15px; }
-  .cta { display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 14px 24px; border-radius: 999px; background: var(--accent); color: var(--texte-accent); font-size: 18px; font-weight: 700; text-align: center; text-decoration: none; transition: transform 140ms var(--courbe); }
-  .cta:active { transform: scale(.97); }
-  .liens { display: flex; justify-content: center; gap: 16px; margin-top: 4px; }
-  .liens button { min-height: 44px; padding: 0 8px; border: 0; background: none; color: var(--texte); font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
-  .liens button[hidden] { display: none; }
-  .statut { margin: 8px 0 0; font-size: 15px; font-weight: 600; }
+  .actions { display: flex; gap: 12px; align-items: stretch; }
+  .cta { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 14px 24px; border-radius: 999px; background: var(--accent); color: var(--texte-accent); font-size: 18px; font-weight: 700; text-align: center; text-decoration: none; transition: transform 140ms var(--courbe); }
+  .partager { flex: none; display: grid; place-items: center; width: 56px; height: 56px; padding: 0; border: 2px solid var(--accent); border-radius: 50%; background: var(--carte); color: var(--accent); cursor: pointer; transition: transform 140ms var(--courbe); }
+  .partager[hidden] { display: none; }
+  .partager svg { width: 24px; height: 24px; }
+  .cta:active, .partager:active, .copier:active { transform: scale(.96); }
+  .encadre { margin-top: 20px; padding: 14px 16px 16px; border: 1px solid var(--filet); border-radius: 16px; background: var(--carte); }
+  .encadre-tete { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .encadre-titre { margin: 0; color: var(--discret); font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+  .copier { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin: -6px -6px -6px 0; padding: 0 14px; border: 0; border-radius: 999px; background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: transform 140ms var(--courbe), background-color 200ms var(--courbe); }
+  .copier svg { width: 16px; height: 16px; }
+  .copier .ok, .copier.fait .ko { display: none; }
+  .copier.fait .ok { display: block; }
+  .copier.fait { background: var(--accent); color: var(--texte-accent); }
+  .statut { margin: 10px 0 0; font-size: 15px; font-weight: 600; }
   .statut:empty { display: none; }
   .statut.erreur { color: var(--erreur); }
-  .message { margin: 16px 0 0; padding-left: 16px; border-left: 2px solid var(--filet); font-size: 15px; line-height: 1.6; white-space: pre-line; -webkit-user-select: text; user-select: text; }
-  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } .cta:active { transform: none; } }
+  .message { margin: 10px 0 0; font-size: 15px; line-height: 1.6; white-space: pre-line; -webkit-user-select: text; user-select: text; }
+  @media (prefers-reduced-motion: reduce) { .cta, .partager, .copier { transition: none; } .cta:active, .partager:active, .copier:active { transform: none; } }
 </style>
 </head>
 <body>
@@ -57,33 +67,43 @@
   <section class="share" id="partage-fr" lang="fr" data-lang="fr" aria-labelledby="titre-fr">
     <h2 id="titre-fr">En français</h2>
     <p class="consigne">Un post LinkedIn s'ouvre avec le texte. Ajoutez votre photo, puis publiez.</p>
-    <a class="cta" href="https://www.linkedin.com/shareArticle?mini=true&amp;text=Je%20participe%20%C3%A0%20la%20Winter%20Fair%20de%20Foyer%20Group%20%F0%9F%8E%84%0ADu%207%20au%2011%20d%C3%A9cembre%2C%20le%20Groupe%20met%20%C3%A0%20l'honneur%20la%20RSE%2C%20les%20initiatives%20solidaires%20et%20les%20projets%20durables%2C%20dans%20une%20ambiance%20de%20march%C3%A9%20de%20No%C3%ABl.%0AAu%20programme%20%3A%20des%20chalets%20pour%20d%C3%A9couvrir%20des%20produits%20et%20soutenir%20des%20initiatives%20solidaires%2C%20des%20conf%C3%A9rences%20sur%20la%20RSE%20et%20le%20d%C3%A9veloppement%20durable%2C%20et%20de%20beaux%20moments%20d'%C3%A9change%20entre%20coll%C3%A8gues.%0AUne%20semaine%20de%20partage%2C%20de%20d%C3%A9couverte%20et%20de%20solidarit%C3%A9%20%E2%9C%A8%0A%23WinterFair2026%20%23FoyerGroup%20%23RSE">Partager sur LinkedIn</a>
-    <div class="liens">
-      <button type="button" data-action="copier">Copier le texte</button>
-      <button type="button" data-action="menu" hidden>Menu de partage</button>
+    <div class="actions">
+      <a class="cta" href="https://www.linkedin.com/shareArticle?mini=true&amp;text=Je%20participe%20%C3%A0%20la%20Winter%20Fair%20de%20Foyer%20Group%20%F0%9F%8E%84%0ADu%207%20au%2011%20d%C3%A9cembre%2C%20le%20Groupe%20met%20%C3%A0%20l'honneur%20la%20RSE%2C%20les%20initiatives%20solidaires%20et%20les%20projets%20durables%2C%20dans%20une%20ambiance%20de%20march%C3%A9%20de%20No%C3%ABl.%0AAu%20programme%20%3A%20des%20chalets%20pour%20d%C3%A9couvrir%20des%20produits%20et%20soutenir%20des%20initiatives%20solidaires%2C%20des%20conf%C3%A9rences%20sur%20la%20RSE%20et%20le%20d%C3%A9veloppement%20durable%2C%20et%20de%20beaux%20moments%20d'%C3%A9change%20entre%20coll%C3%A8gues.%0AUne%20semaine%20de%20partage%2C%20de%20d%C3%A9couverte%20et%20de%20solidarit%C3%A9%20%E2%9C%A8%0A%23WinterFair2026%20%23FoyerGroup%20%23RSE">Partager sur LinkedIn</a>
+      <button type="button" class="partager" data-action="menu" aria-label="Partager sur un autre réseau" title="Partager sur un autre réseau" hidden><svg class="icone-partage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
     </div>
-    <p class="statut" role="status" aria-live="polite"></p>
-    <p class="message">Je participe à la Winter Fair de Foyer Group 🎄
+    <div class="encadre">
+      <div class="encadre-tete">
+        <p class="encadre-titre">Le texte du post</p>
+        <button type="button" class="copier" data-action="copier"><svg class="ko" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="copier-libelle">Copier</span></button>
+      </div>
+      <p class="message">Je participe à la Winter Fair de Foyer Group 🎄
 Du 7 au 11 décembre, le Groupe met à l'honneur la RSE, les initiatives solidaires et les projets durables, dans une ambiance de marché de Noël.
 Au programme : des chalets pour découvrir des produits et soutenir des initiatives solidaires, des conférences sur la RSE et le développement durable, et de beaux moments d'échange entre collègues.
 Une semaine de partage, de découverte et de solidarité ✨
 #WinterFair2026 #FoyerGroup #RSE</p>
+    </div>
+    <p class="statut" role="status" aria-live="polite"></p>
   </section>
 
   <section class="share" id="partage-en" lang="en" data-lang="en" aria-labelledby="titre-en">
     <h2 id="titre-en">In English</h2>
     <p class="consigne">A LinkedIn post opens with the text. Add your photo, then publish.</p>
-    <a class="cta" href="https://www.linkedin.com/shareArticle?mini=true&amp;text=I'm%20taking%20part%20in%20the%20Foyer%20Group%20Winter%20Fair%20%F0%9F%8E%84%0AFrom%207%20to%2011%20December%2C%20the%20Group%20puts%20corporate%20social%20responsibility%2C%20solidarity%20initiatives%20and%20sustainable%20projects%20in%20the%20spotlight%2C%20in%20a%20festive%20Christmas%20market%20atmosphere.%0AOn%20the%20programme%3A%20chalets%20to%20discover%20products%20and%20support%20solidarity%20initiatives%2C%20talks%20on%20CSR%20and%20sustainability%2C%20and%20great%20moments%20with%20colleagues.%0AA%20week%20of%20sharing%2C%20discovery%20and%20solidarity%20%E2%9C%A8%0A%23WinterFair2026%20%23FoyerGroup%20%23CSR">Share on LinkedIn</a>
-    <div class="liens">
-      <button type="button" data-action="copier">Copy the text</button>
-      <button type="button" data-action="menu" hidden>Share menu</button>
+    <div class="actions">
+      <a class="cta" href="https://www.linkedin.com/shareArticle?mini=true&amp;text=I'm%20taking%20part%20in%20the%20Foyer%20Group%20Winter%20Fair%20%F0%9F%8E%84%0AFrom%207%20to%2011%20December%2C%20the%20Group%20puts%20corporate%20social%20responsibility%2C%20solidarity%20initiatives%20and%20sustainable%20projects%20in%20the%20spotlight%2C%20in%20a%20festive%20Christmas%20market%20atmosphere.%0AOn%20the%20programme%3A%20chalets%20to%20discover%20products%20and%20support%20solidarity%20initiatives%2C%20talks%20on%20CSR%20and%20sustainability%2C%20and%20great%20moments%20with%20colleagues.%0AA%20week%20of%20sharing%2C%20discovery%20and%20solidarity%20%E2%9C%A8%0A%23WinterFair2026%20%23FoyerGroup%20%23CSR">Share on LinkedIn</a>
+      <button type="button" class="partager" data-action="menu" aria-label="Share on another network" title="Share on another network" hidden><svg class="icone-partage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
     </div>
-    <p class="statut" role="status" aria-live="polite"></p>
-    <p class="message">I'm taking part in the Foyer Group Winter Fair 🎄
+    <div class="encadre">
+      <div class="encadre-tete">
+        <p class="encadre-titre">The post text</p>
+        <button type="button" class="copier" data-action="copier"><svg class="ko" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="copier-libelle">Copy</span></button>
+      </div>
+      <p class="message">I'm taking part in the Foyer Group Winter Fair 🎄
 From 7 to 11 December, the Group puts corporate social responsibility, solidarity initiatives and sustainable projects in the spotlight, in a festive Christmas market atmosphere.
 On the programme: chalets to discover products and support solidarity initiatives, talks on CSR and sustainability, and great moments with colleagues.
 A week of sharing, discovery and solidarity ✨
 #WinterFair2026 #FoyerGroup #CSR</p>
+    </div>
+    <p class="statut" role="status" aria-live="polite"></p>
   </section>
 </main>
 </div>
@@ -91,8 +111,8 @@ A week of sharing, discovery and solidarity ✨
 <script>
 (function () {
   var TEXTES = {
-    fr: { date: "Du 7 au 11 décembre 2026, chez Foyer Group", titre: "Partagez votre participation", onglet: "Partagez votre participation, Winter Fair 2026 · Foyer Group", copie: 'Texte copié.', menu: 'Texte copié. Choisissez LinkedIn. Si le post est vide, collez le texte.', echec: 'Copie bloquée par ce navigateur. Le texte est sélectionné : copiez-le.' },
-    en: { date: "7 to 11 December 2026, at Foyer Group", titre: "Share that you're taking part", onglet: "Share that you're taking part, Winter Fair 2026 · Foyer Group", copie: 'Text copied.', menu: 'Text copied. Choose LinkedIn. If the post is empty, paste the text.', echec: 'This browser blocked copying. The text is selected: copy it.' }
+    fr: { date: "Du 7 au 11 décembre 2026, chez Foyer Group", titre: "Partagez votre participation", onglet: "Partagez votre participation, Winter Fair 2026 · Foyer Group", copie: 'Texte copié.', copier: 'Copier', copiee: 'Copié', menu: 'Texte copié. Choisissez LinkedIn. Si le post est vide, collez le texte.', echec: 'Copie bloquée par ce navigateur. Le texte est sélectionné : copiez-le.' },
+    en: { date: "7 to 11 December 2026, at Foyer Group", titre: "Share that you're taking part", onglet: "Share that you're taking part, Winter Fair 2026 · Foyer Group", copie: 'Text copied.', copier: 'Copy', copiee: 'Copied', menu: 'Text copied. Choose LinkedIn. If the post is empty, paste the text.', echec: 'This browser blocked copying. The text is selected: copy it.' }
   };
 
   function langue() {
@@ -152,10 +172,11 @@ A week of sharing, discovery and solidarity ✨
       statut.textContent = phrase;
       statut.classList.toggle('erreur', Boolean(erreur));
     }
-    function copier(phrase) {
-      if (copierSync(texte)) { dire(phrase); return; }
+    function copier(phrase, reussi) {
+      var succes = reussi || function () { dire(phrase); };
+      if (copierSync(texte)) { succes(); return; }
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(texte).then(function () { dire(phrase); }, function () { selectionner(message); dire(t.echec, true); });
+        navigator.clipboard.writeText(texte).then(succes, function () { selectionner(message); dire(t.echec, true); });
         return;
       }
       selectionner(message);
@@ -165,9 +186,22 @@ A week of sharing, discovery and solidarity ✨
     if (estIphone) {
       section.querySelector('.cta').href = 'https://www.linkedin.com/feed/share?text=' + encodeURIComponent(texte);
     }
-    section.querySelector('[data-action="copier"]').addEventListener('click', function () { copier(t.copie); });
+    // Le bouton confirme lui-même la copie (coche + « Copié »), puis revient à l'état normal.
+    var bouton = section.querySelector('[data-action="copier"]');
+    var libelle = bouton.querySelector('.copier-libelle');
+    var minuteur;
+    bouton.addEventListener('click', function () {
+      copier(t.copie, function () {
+        dire('');
+        bouton.classList.add('fait');
+        libelle.textContent = t.copiee;
+        clearTimeout(minuteur);
+        minuteur = setTimeout(function () { bouton.classList.remove('fait'); libelle.textContent = t.copier; }, 2000);
+      });
+    });
 
     var menu = section.querySelector('[data-action="menu"]');
+    if (estIphone) menu.querySelector('svg').innerHTML = '<path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/>';
     menu.hidden = !menuDispo;
     menu.addEventListener('click', function () {
       copier(t.menu);

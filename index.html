@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partagez votre participation, Winter Fair 2026 · Foyer Group</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e8f4fb">
+<style>
+  :root {
+    --fond: #e8f4fb;
+    --texte: #143d24;
+    --discret: #3f5f4a;
+    --accent: #1f5b35;
+    --texte-accent: #ffffff;
+    --filet: color-mix(in srgb, var(--texte) 18%, transparent);
+    --erreur: #d04348;
+    --courbe: cubic-bezier(.23, 1, .32, 1);
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--fond); -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 400 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .page { max-width: 640px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) 24px max(32px, env(safe-area-inset-bottom)); }
+  .logo { display: block; max-height: 28px; max-width: 180px; margin-bottom: 24px; }
+  h1 { margin: 0; font-size: clamp(36px, 11vw, 64px); line-height: 1; letter-spacing: -.03em; }
+  .evenement { margin: 12px 0 0; font-weight: 600; }
+  .date { margin: 2px 0 0; color: var(--discret); }
+  .visuel { display: block; width: 100%; height: auto; margin-top: 24px; border-radius: 12px; }
+  main { display: flex; flex-direction: column; gap: 40px; margin-top: 32px; }
+  .share h2 { margin: 0 0 8px; font-size: 22px; line-height: 1.2; }
+  .consigne { margin: 0 0 12px; color: var(--discret); font-size: 15px; }
+  .cta { display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 14px 24px; border-radius: 999px; background: var(--accent); color: var(--texte-accent); font-size: 18px; font-weight: 700; text-align: center; text-decoration: none; transition: transform 140ms var(--courbe); }
+  .cta:active { transform: scale(.97); }
+  .liens { display: flex; justify-content: center; gap: 16px; margin-top: 4px; }
+  .liens button { min-height: 44px; padding: 0 8px; border: 0; background: none; color: var(--texte); font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  .liens button[hidden] { display: none; }
+  .statut { margin: 8px 0 0; font-size: 15px; font-weight: 600; }
+  .statut:empty { display: none; }
+  .statut.erreur { color: var(--erreur); }
+  .message { margin: 16px 0 0; padding-left: 16px; border-left: 2px solid var(--filet); font-size: 15px; line-height: 1.6; white-space: pre-line; -webkit-user-select: text; user-select: text; }
+  @media (prefers-reduced-motion: reduce) { .cta { transition: none; } .cta:active { transform: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  
+  <h1 id="titre">Partagez votre participation</h1>
+  <p class="evenement">Winter Fair 2026 · Foyer Group</p>
+  <p class="date" id="date">Du 7 au 11 décembre 2026, chez Foyer Group</p>
+</header>
+<img class="visuel" src="visuel.webp" alt="" width="800" height="450">
+
+<main id="partages">
+  <section class="share" id="partage-fr" lang="fr" data-lang="fr" aria-labelledby="titre-fr">
+    <h2 id="titre-fr">En français</h2>
+    <p class="consigne">Un post LinkedIn s'ouvre avec le texte. Ajoutez votre photo, puis publiez.</p>
+    <a class="cta" href="https://www.linkedin.com/shareArticle?mini=true&amp;text=Je%20participe%20%C3%A0%20la%20Winter%20Fair%20de%20Foyer%20Group%20%F0%9F%8E%84%0ADu%207%20au%2011%20d%C3%A9cembre%2C%20le%20Groupe%20met%20%C3%A0%20l'honneur%20la%20RSE%2C%20les%20initiatives%20solidaires%20et%20les%20projets%20durables%2C%20dans%20une%20ambiance%20de%20march%C3%A9%20de%20No%C3%ABl.%0AAu%20programme%20%3A%20des%20chalets%20pour%20d%C3%A9couvrir%20des%20produits%20et%20soutenir%20des%20initiatives%20solidaires%2C%20des%20conf%C3%A9rences%20sur%20la%20RSE%20et%20le%20d%C3%A9veloppement%20durable%2C%20et%20de%20beaux%20moments%20d'%C3%A9change%20entre%20coll%C3%A8gues.%0AUne%20semaine%20de%20partage%2C%20de%20d%C3%A9couverte%20et%20de%20solidarit%C3%A9%20%E2%9C%A8%0A%23WinterFair2026%20%23FoyerGroup%20%23RSE">Partager sur LinkedIn</a>
+    <div class="liens">
+      <button type="button" data-action="copier">Copier le texte</button>
+      <button type="button" data-action="menu" hidden>Menu de partage</button>
+    </div>
+    <p class="statut" role="status" aria-live="polite"></p>
+    <p class="message">Je participe à la Winter Fair de Foyer Group 🎄
+Du 7 au 11 décembre, le Groupe met à l'honneur la RSE, les initiatives solidaires et les projets durables, dans une ambiance de marché de Noël.
+Au programme : des chalets pour découvrir des produits et soutenir des initiatives solidaires, des conférences sur la RSE et le développement durable, et de beaux moments d'échange entre collègues.
+Une semaine de partage, de découverte et de solidarité ✨
+#WinterFair2026 #FoyerGroup #RSE</p>
+  </section>
+
+  <section class="share" id="partage-en" lang="en" data-lang="en" aria-labelledby="titre-en">
+    <h2 id="titre-en">In English</h2>
+    <p class="consigne">A LinkedIn post opens with the text. Add your photo, then publish.</p>
+    <a class="cta" href="https://www.linkedin.com/shareArticle?mini=true&amp;text=I'm%20taking%20part%20in%20the%20Foyer%20Group%20Winter%20Fair%20%F0%9F%8E%84%0AFrom%207%20to%2011%20December%2C%20the%20Group%20puts%20corporate%20social%20responsibility%2C%20solidarity%20initiatives%20and%20sustainable%20projects%20in%20the%20spotlight%2C%20in%20a%20festive%20Christmas%20market%20atmosphere.%0AOn%20the%20programme%3A%20chalets%20to%20discover%20products%20and%20support%20solidarity%20initiatives%2C%20talks%20on%20CSR%20and%20sustainability%2C%20and%20great%20moments%20with%20colleagues.%0AA%20week%20of%20sharing%2C%20discovery%20and%20solidarity%20%E2%9C%A8%0A%23WinterFair2026%20%23FoyerGroup%20%23CSR">Share on LinkedIn</a>
+    <div class="liens">
+      <button type="button" data-action="copier">Copy the text</button>
+      <button type="button" data-action="menu" hidden>Share menu</button>
+    </div>
+    <p class="statut" role="status" aria-live="polite"></p>
+    <p class="message">I'm taking part in the Foyer Group Winter Fair 🎄
+From 7 to 11 December, the Group puts corporate social responsibility, solidarity initiatives and sustainable projects in the spotlight, in a festive Christmas market atmosphere.
+On the programme: chalets to discover products and support solidarity initiatives, talks on CSR and sustainability, and great moments with colleagues.
+A week of sharing, discovery and solidarity ✨
+#WinterFair2026 #FoyerGroup #CSR</p>
+  </section>
+</main>
+</div>
+
+<script>
+(function () {
+  var TEXTES = {
+    fr: { date: "Du 7 au 11 décembre 2026, chez Foyer Group", titre: "Partagez votre participation", onglet: "Partagez votre participation, Winter Fair 2026 · Foyer Group", copie: 'Texte copié.', menu: 'Texte copié. Choisissez LinkedIn. Si le post est vide, collez le texte.', echec: 'Copie bloquée par ce navigateur. Le texte est sélectionné : copiez-le.' },
+    en: { date: "7 to 11 December 2026, at Foyer Group", titre: "Share that you're taking part", onglet: "Share that you're taking part, Winter Fair 2026 · Foyer Group", copie: 'Text copied.', menu: 'Text copied. Choose LinkedIn. If the post is empty, paste the text.', echec: 'This browser blocked copying. The text is selected: copy it.' }
+  };
+
+  function langue() {
+    var forcee = new URLSearchParams(location.search).get('lang');
+    if (forcee === 'fr' || forcee === 'en') return forcee;
+    var premiere = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    return premiere.toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+  }
+
+  // La langue du téléphone passe en premier, l'autre reste en dessous.
+  var lang = langue();
+  document.documentElement.lang = lang;
+  document.getElementById('titre').textContent = TEXTES[lang].titre;
+  document.getElementById('date').textContent = TEXTES[lang].date;
+  document.title = TEXTES[lang].onglet;
+  if (lang === 'en') {
+    var main = document.getElementById('partages');
+    main.insertBefore(document.getElementById('partage-en'), main.firstChild);
+  }
+
+  // Synchrone : le résultat est connu avant que l'app LinkedIn prenne le focus.
+  function copierSync(texte) {
+    var zone = document.createElement('textarea');
+    zone.value = texte;
+    zone.setAttribute('readonly', '');
+    zone.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px';
+    document.body.appendChild(zone);
+    zone.focus({ preventScroll: true });
+    zone.select();
+    zone.setSelectionRange(0, texte.length);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(zone);
+    return ok;
+  }
+
+  function selectionner(el) {
+    var plage = document.createRange();
+    plage.selectNodeContents(el);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(plage);
+  }
+
+  // Mesuré sur vrais téléphones : l'iPhone ouvre le post rempli avec /feed/share, Android avec /shareArticle.
+  // Le lien reste natif, sans script au clic : c'est la seule forme testée.
+  var estIphone = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var menuDispo = typeof navigator.share === 'function' && matchMedia('(pointer: coarse)').matches;
+
+  document.querySelectorAll('.share').forEach(function (section) {
+    var t = TEXTES[section.dataset.lang];
+    var message = section.querySelector('.message');
+    var statut = section.querySelector('.statut');
+    var texte = message.textContent.trim();
+
+    function dire(phrase, erreur) {
+      statut.textContent = phrase;
+      statut.classList.toggle('erreur', Boolean(erreur));
+    }
+    function copier(phrase) {
+      if (copierSync(texte)) { dire(phrase); return; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texte).then(function () { dire(phrase); }, function () { selectionner(message); dire(t.echec, true); });
+        return;
+      }
+      selectionner(message);
+      dire(t.echec, true);
+    }
+
+    if (estIphone) {
+      section.querySelector('.cta').href = 'https://www.linkedin.com/feed/share?text=' + encodeURIComponent(texte);
+    }
+    section.querySelector('[data-action="copier"]').addEventListener('click', function () { copier(t.copie); });
+
+    var menu = section.querySelector('[data-action="menu"]');
+    menu.hidden = !menuDispo;
+    menu.addEventListener('click', function () {
+      copier(t.menu);
+      navigator.share({ text: texte }).catch(function (erreur) { if (erreur && erreur.name !== 'AbortError') dire(t.copie); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
